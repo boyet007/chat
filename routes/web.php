@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/test', function() {
+    $x = 1;
+    $y = 2;
+    return "test chat";
+});
 Route::get('/', function () {
     return view('welcome');
 });
