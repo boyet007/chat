@@ -23,6 +23,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', [App\Http\Controllers\ChatController::class, 'index']);
+    Route::get('messages', [App\Http\Controllers\ChatController::class, 'getMessages']);
+    Route::post('messages', [App\Http\Controllers\ChatController::class, 'broadcastMessage']);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
